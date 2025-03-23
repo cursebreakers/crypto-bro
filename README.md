@@ -75,19 +75,19 @@ The sub menu will open once a key is generated. This displays four options:
 
 **Copy to clipboard**
 
-Select "c" to copy the key to your clipboard.
+- Select "c" to copy the key to your clipboard.
 
 **Regenerate**
 
-Select "r" to regenerate the key.
+- Select "r" to regenerate the key.
 
 **Main menu**
 
-Select "m" to return to the main menu.
+- Select "m" to return to the main menu.
 
 **Quit**
 
-Select "q" to terminate the program.
+- Select "q" to terminate the program.
 
 ---
 
@@ -121,11 +121,10 @@ Most options are straightforward. Just select the key type and it will be genera
 
 You are encouraged to edit and customize your word lists. They can be found under *words* in the *src* folder.
 
-*names.txt* provides noun type values.
+- *names.txt* provides noun type values.
+- *descriptors.txt* provides adjective types.
 
-*descriptors.txt* provides adjective types.
-
-NOTE: You will need to relaunch the program to use any new words you've added.
+*NOTE: You will need to relaunch the program to use the new words you've added.*
 
 ---
 
@@ -134,12 +133,16 @@ NOTE: You will need to relaunch the program to use any new words you've added.
 - Improving the greeting/ascii art appearance
 
 **FUTURE**
-- Improved word lists
-- listen for the actual option keys, instead of needing to press enter to confirm choices
+- Listener for option keys (instead of pressing enter to confirm choice)
 - Batch key generation
-- Export/save as files
+- Export/save keys to files
+- Password/username variance
+  - Improved/expanded word lists
+- Expanded flags/arguments and man pages
 
-This is the planning section. These features are (99% likely) not yet implemented, nor may they ever be. Please [let me know](mailto:hello@cursebreakers.net) if you would like to request a feature.
+*This is the planning section. These features are (99% likely) not yet implemented, nor may they ever be.* 
+
+Please [let me know](mailto:hello@cursebreakers.net) if you would like to request a feature.
 
 ---
 
@@ -149,7 +152,7 @@ This is the planning section. These features are (99% likely) not yet implemente
 
 Esau @ [Cursebreakers LLC](https://cursebreakers.net)
 
-## Dependencies
+## Dependencies:
 
 Crates used in this program.
 
@@ -167,11 +170,11 @@ Crates used in this program.
 | `ring`              | 0.16    | Cryptographic primitives                        |
 | `uuid`              | 1.0     | UUID generation (v4 feature enabled)            |
 
-## License
+## License:
 
 This project is (to be) released under the MIT License.
 
-## Contributions
+## Contributions:
 
 Contributions are welcome! Feel free to [submit issues](mailto:hello@cursebreakers.net), pull requests, or suggestions for improvement.
 
