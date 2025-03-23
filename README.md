@@ -1,6 +1,6 @@
 # Key Generator | Rust
 
-**v0.0.9** "crypto_bro"
+**v0.0.9** - "crypto_bro"
 
 *A CLI tool for generating credentials, cryptographic keys and ID's.*
 
@@ -25,11 +25,11 @@
 
 1. Fork the repository:
 
-`gh repo fork https://github.com/cursebreakers/key-gen.git --clone`
+`gh repo fork https://github.com/cursebreakers/crypto-bro.git --clone`
 
 2. Compile and launch the program:
 
-`cd key-gen && cargo run`
+`cd crypto-bro && cargo run`
 
 ---
 
