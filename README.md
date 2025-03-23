@@ -39,7 +39,7 @@ There a few arguments that can be used with this program.
 
 **Info**
 
-`cargo run -- -h --help` displays the help menu.
+`cargo run -- --help` or `cargo run -- -h` displays the help menu.
 
 `cargo run -- --version` prints the app version.
 
@@ -146,6 +146,7 @@ You are encouraged to edit and customize your word lists. They can be found unde
 **FUTURE**
 
 - Listener for option keys (instead of pressing enter to confirm choice)
+  - add a man/help option to main menu
 - Batch key generation
 - Export/save to file
 
@@ -164,8 +165,8 @@ You are encouraged to edit and customize your word lists. They can be found unde
 - Expanded flags/arguments (and man pages!)
   - var flags for pass and unames?
   - -b flag: generate batches of keys
-  - -exp flag: pipe mode 
-    - bypass menu, allowing the keys to be piped elsewhere
+  - -exp flag: pipe mode
+    - bypass menu, allowing generated keys to be piped elsewhere
     - txt and md args for saving keys/batches to files
 
 *This is the planning section. These features are (99% likely) not yet implemented, nor may they ever be.* 
@@ -180,7 +181,9 @@ Please [let me know](mailto:hello@cursebreakers.net) if you would like to reques
 
 Esau @ [Cursebreakers LLC](https://cursebreakers.net)
 
-## Dependencies:
+## Built with:
+
+**Rust**
 
 Crates used in this program.
 
@@ -197,6 +200,8 @@ Crates used in this program.
 | `rand`              | 0.8     | Random number generation                        |
 | `ring`              | 0.16    | Cryptographic primitives                        |
 | `uuid`              | 1.0     | UUID generation (v4 feature enabled)            |
+
+Honorable mention to [cargo-mommy](https://github.com/Gankra/cargo-mommy), for making programming with Rust much more fun.
 
 ## License:
 
