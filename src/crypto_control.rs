@@ -98,7 +98,7 @@ pub fn generate_username() -> String {
     // Randomly select descriptors and names, occasionally adding underscores
     let descriptor = descriptors[rng.gen_range(0..descriptors.len())].clone();
     let name = names[rng.gen_range(0..names.len())].clone();
-	let add_underscore: bool = rng.gen_bool(0.66); 
+	let add_underscore: bool = rng.gen_bool(0.72); 
 
     // Combine them into a username
 	if add_underscore {
