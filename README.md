@@ -1,6 +1,6 @@
 # Key Generator | Rust
 
-**v0.0.9** - "crypto_bro"
+**v0.0.9** - "crypto-bro"
 
 *A CLI tool for generating credentials, cryptographic keys and ID's.*
 
@@ -13,7 +13,7 @@
 - **UUID (v4 format)**: Generates a version 4 UUID.
 - **API Key (Base64 encoded, 256-bit)**: Generates a Base64 encoded API key.
 - **Passwords: (16 and 32 characters)**: Generates random passwords.
-- **Usernames (Word List Generated)**: Generate usernames using word lists.
+- **Usernames (Word list Generated)**: Generate usernames using word lists.
 
 ---
 
@@ -37,21 +37,27 @@
 
 There a few arguments that can be used with this program.
 
+**Info**
+
+`cargo run -- -h --help` displays the help menu.
+
+`cargo run -- --version` prints the app version.
+
 **Quick-start**
 
 Use `cargo run` with the following flags to quickly return a key of choice.
 
-`cargo run -- -k (1, 2, 3, 4, 5, 6 or 7)` (corresponds with the "Main menu" below)
+`cargo run -- -k (1, 2, 3, 4, 5, 6 or 7)` 
 
-*example: *
+The numbers 1-7 correspond with the "Main menu" below.
 
-`cargo run -- -k 4` immediately generates an API key.
+*examples:*
 
-**Info**
+`cargo run -- -k 4` would immediately generate an API key.
 
-`cargo run -- -h --help` - displays the help menu
+`cargo run -- -k 6` would generate a 32 character password.
 
-`cargo run -- --version` - prints the app version
+And so on.
 
 ---
 
@@ -65,15 +71,17 @@ Once initialized, you may select an option from the main menu:
 4. API Key                    (Base64 encoded, 256-bit)
 5. Password                   (16-characters)
 6. Password                   (32-characters)
-7. Username                   (Randomly generated)
+7. Username                   (Word list generated)
 
 q. Quit
 
 ---
 
-## Sub menu
+## Submenu
 
-The sub menu will open once a key is generated. This displays four options:
+The submenu will open once a key is generated, whether from the main menu or quick start. 
+
+The submenu displays four options:
 
 **Copy to clipboard**
 
@@ -132,16 +140,33 @@ You are encouraged to edit and customize your word lists. They can be found unde
 
 # WORKING/NEXT
 
-- Known bug: Submenu option "c" to copy key to clipboard doesn't always work on the first try
+- Known bug: submenu option "c" to copy key to clipboard doesn't always work on the first try
 - Improving the greeting/ascii art appearance
 
 **FUTURE**
+
 - Listener for option keys (instead of pressing enter to confirm choice)
 - Batch key generation
-- Export/save keys to files
+- Export/save to file
+
 - Password/username variance
   - Improved/expanded word lists
-- Expanded flags/arguments and man pages
+
+- Syntactical flags for menu options
+  - -o flag: OpenSSL
+  - -r flag: Ring
+  - -u flag: UUIDv4
+  - -a flag: API key
+  - -p flag: passwords
+    - two args (16 or 32)
+  - -n flag: username
+
+- Expanded flags/arguments (and man pages!)
+  - var flags for pass and unames?
+  - -b flag: generate batches of keys
+  - -exp flag: pipe mode 
+    - bypass menu, allowing the keys to be piped elsewhere
+    - txt and md args for saving keys/batches to files
 
 *This is the planning section. These features are (99% likely) not yet implemented, nor may they ever be.* 
 

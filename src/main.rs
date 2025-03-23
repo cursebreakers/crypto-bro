@@ -32,7 +32,7 @@ fn main() {
 			4 => (crypto_control::generate_api_key(), "Base64 encoded, 256-bit (API Key)", 4),
 			5 => (crypto_control::generate_password(16), "16-character password", 5),
             6 => (crypto_control::generate_password(32), "32-character password", 6),
-            7 => (crypto_control::generate_username(), "Username (Randomly generated)", 7),
+            7 => (crypto_control::generate_username(), "Username (Word list generated)", 7),
 			_ => {
 				println!("\x1b[91mInvalid key type! Use -k 1, 2, 3, or 4.\x1b[0m");
 				return;
@@ -59,7 +59,7 @@ fn main() {
             println!("    4. API Key                   (Base64 encoded, 256-bit)");
             println!("    5. Password                  (16-characters)");
             println!("    6. Password                  (32-characters)");
-            println!("    7. Username                  (Randomly generated)");
+            println!("    7. Username                  (Word list generated)");
             println!("\n");
             println!("    q. Quit");
             println!("\n________________________________\n");
@@ -95,7 +95,7 @@ fn main() {
                 4 => (crypto_control::generate_api_key(), "Base64 encoded, 256-bit (API Key)", 4),
 				5 => (crypto_control::generate_password(16), "16-character password", 5),
                 6 => (crypto_control::generate_password(32), "32-character password", 6),
-                7 => (crypto_control::generate_username(), "Username (Randomly generated)", 7),
+                7 => (crypto_control::generate_username(), "Username (Word list generated)", 7),
 
                 _ => {
                     println!("\x1b[91mInvalid choice!\x1b[0m");
@@ -141,7 +141,7 @@ fn main() {
                         4 => (crypto_control::generate_api_key(), "Base64 encoded, 256-bit (API Key)"),
 						5 => (crypto_control::generate_password(16), "16-character password"),
                         6 => (crypto_control::generate_password(32), "32-character password"),
-                        7 => (crypto_control::generate_username(), "Username (Randomly generated)"),
+                        7 => (crypto_control::generate_username(), "Username (Word list generated)"),
                         _ => {
                             println!("\x1b[91mError in regenerating key!\x1b[0m");
                             continue;
