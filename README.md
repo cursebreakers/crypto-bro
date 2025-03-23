@@ -41,15 +41,17 @@ There a few arguments that can be used with this program.
 
 Use `cargo run` with the following flags to quickly return a key of choice.
 
-`-- -k (1, 2, 3, 4, 5, 6 or 7)` (corresponds with the "Main menu" below)
+`cargo run -- -k (1, 2, 3, 4, 5, 6 or 7)` (corresponds with the "Main menu" below)
 
-eg: `cargo run -- -k 4` immediately generates an API key.
+*example: *
+
+`cargo run -- -k 4` immediately generates an API key.
 
 **Info**
 
-`-- -h --help` - displays the help menu
+`cargo run -- -h --help` - displays the help menu
 
-`-- --version` - prints the app version
+`cargo run -- --version` - prints the app version
 
 ---
 
@@ -130,6 +132,7 @@ You are encouraged to edit and customize your word lists. They can be found unde
 
 # WORKING/NEXT
 
+- Known bug: Submenu option "c" to copy key to clipboard doesn't always work on the first try
 - Improving the greeting/ascii art appearance
 
 **FUTURE**
