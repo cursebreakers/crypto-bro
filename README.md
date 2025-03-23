@@ -175,7 +175,7 @@ Crates used in this program.
 
 ## License:
 
-This project is (to be) released under the MIT License.
+This project is to be released under either MIT, Apache 2.0 or both.
 
 ## Contributions:
 
