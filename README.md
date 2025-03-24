@@ -145,8 +145,7 @@ You are encouraged to edit and customize your word lists. They can be found unde
 
 **FUTURE**
 
-- Listener for option keys (instead of pressing enter to confirm choice)
-  - add a man/help option to main menu
+- Add a man/help option to main menu
 - Batch key generation
 - Export/save to file
 

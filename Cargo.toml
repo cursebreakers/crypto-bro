@@ -15,4 +15,4 @@ pbkdf2 = "0.9"
 base64 = "0.13"
 clap = { version = "4.0", features = ["derive"] }
 arboard = "3.2"
-
+crossterm = "0.27"
