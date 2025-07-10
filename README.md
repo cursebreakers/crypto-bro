@@ -161,7 +161,7 @@ Decryption:
 
 *NOTES:* 
 - Max filesize is set to 25% of your device's available RAM by default. This can be adjusted by tweaking the `max_allowed_file_size` function in `src/lunchbox.rs`
-- Files encryption compatibility with other AES tools is not guaranteed.
+- File compatibility with other AES tools is not guaranteed.
 - Support of any filetype other than UTF-8 plain-text is experimental and not guaranteed.
 
 ---
