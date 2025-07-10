@@ -14,7 +14,7 @@
 - **API Key (Base64 encoded, 256-bit)**: Generates a Base64 encoded API key.
 - **Passwords: (16 and 32 characters)**: Generates random passwords.
 - **Usernames (Word list Generated)**: Generate usernames using word lists.
-
+- **File Encryption/Decryption**: Secure your files using 256-bit encryption. *EXPERIMENTAL*
 ---
 
 ## Installation
@@ -25,7 +25,7 @@
 
 1. Fork the repository:
 
-`gh repo fork https://github.com/cursebreakers/crypto-bro.git --clone`
+`git clone https://github.com/cursebreakers/crypto-bro`
 
 2. Compile and launch the program:
 
@@ -51,6 +51,8 @@ Use `cargo run` with the following flags to quickly return a key of choice.
 
 The numbers 1-7 correspond with the "Main menu" below.
 
+Flag options have not yet been added for the file encrypt/decrypt feature, but are coming soon.
+
 *examples:*
 
 `cargo run -- -k 4` would immediately generate an API key.
@@ -72,7 +74,8 @@ Once initialized, you may select an option from the main menu:
 5. Password                   (16-characters)
 6. Password                   (32-characters)
 7. Username                   (Word list generated)
-
+8. Encrypt file               (AES 256-bit)
+9. Decrypt file               (AES 256-bit)
 q. Quit
 
 ---
@@ -138,10 +141,33 @@ You are encouraged to edit and customize your word lists. They can be found unde
 
 ---
 
+## File Encryption/Decryption
+
+Options 8 and 9 in the main menu use a CBC AES-256 engine to encode and decode your files.
+
+**How it works:**
+- Encryption:
+  1. *Make sure you place a file in the "crypto-bro/data" directory first.*
+  2. At the submenu, you will be prompted to select target file.
+  3. Next, you will generate a key. *Don't lose it!*
+  4. Once you accept the key, the file will be encrypted.
+  5. Once complete, you will be given a checksum for the encrypted file.
+- Decryption:
+  1. *Make sure you place a file in the "crypto-bro/data/encrypted" directory first.*
+  2. At the submenu, you will be prompted to select target file.
+  3. Next, you will be asked to provide your key. *You saved it, right?*
+  4. Once you enter the key, the file will be decrypted.
+  5. Once complete, you will be given a checksum for the encrypted file.
+
+*NOTE:* Max filesize is set to 25% of your device's available RAM by default. This can be adjusted by tweaking the `max_allowed_file_size` function in `src/lunchbox.rs`
+
+---
+
 # WORKING/NEXT
 
 - Known bug: submenu option "c" to copy key to clipboard doesn't always work on the first try
 - Improving the greeting/ascii art appearance
+- Checksums for decryption seem to be malfunctioning (often).
 
 **FUTURE**
 
@@ -167,6 +193,7 @@ You are encouraged to edit and customize your word lists. They can be found unde
   - -exp flag: pipe mode
     - bypass menu, allowing generated keys to be piped elsewhere
     - txt and md args for saving keys/batches to files
+- pipe mode for file encryption/decryption invoked directly from cli
 
 *This is the planning section. These features are (99% likely) not yet implemented, nor may they ever be.* 
 

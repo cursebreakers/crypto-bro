@@ -1,6 +1,7 @@
 // main.rs
 
 mod crypto_control;
+mod lunchbox;
 mod ascii;
 
 use crossterm::{
@@ -11,7 +12,7 @@ use std::io::{self, Write};
 use clap::Parser;
 
 #[derive(Parser)]
-#[command(name = "Key Generator", version = "0.1.0", about = "Generate cryptographic keys")]
+#[command(name = "Key Generator", version = "0.1.0", about = "The Rust-based cryptographic multi-tool.")]
 struct Args {
     #[arg(short = 'k', help = "Key type: 1 (OpenSSL), 2 (Ring), 3 (UUID), 4 (API Key), 5 (16char Password), 6 (32char Password), 7 (Username)")]
     key: Option<u32>,
@@ -70,7 +71,9 @@ fn main() {
             println!("    [4] API Key                   (Base64 encoded, 256-bit)");
             println!("    [5] Password                  (16-characters)");
             println!("    [6] Password                  (32-characters)");
-            println!("    [7] Username                  (Word list generated)\n");
+            println!("    [7] Username                  (Word list generated)");
+            println!("    [8] Pack .env file            (Encrypt)");
+            println!("    [9] Unpack .env file          (Decrypt)\n");
             println!("    [q] Quit\n");
             println!("________________________________\n");
 
@@ -87,15 +90,27 @@ fn main() {
                     return;
                 }
                 KeyCode::Char(c) if c.is_digit(10) => {
-                    if let Some(k) = generate_key(c.to_digit(10).unwrap()) {
-                        k
+                    let choice = c.to_digit(10).unwrap();
+                    if choice >= 1 && choice <= 7 {
+                        if let Some(k) = generate_key(choice) {
+                            k
+                        } else {
+                            println!("\x1b[91mInvalid choice!\x1b[0m");
+                            continue;
+                        }
+                    } else if choice == 8 {
+                        lunchbox::encrypt_menu_loop();
+                        continue;
+                    } else if choice == 9 {
+                        lunchbox::decrypt_menu_loop();
+                        continue;
                     } else {
                         println!("\x1b[91mInvalid choice!\x1b[0m");
                         continue;
                     }
                 }
                 _ => {
-                    println!("\x1b[91mInvalid input! Press a number (1-7) or 'q' to quit.\x1b[0m");
+                    println!("\x1b[91mInvalid input! Press a number (1-9) or 'q' to quit.\x1b[0m");
                     continue;
                 }
             }

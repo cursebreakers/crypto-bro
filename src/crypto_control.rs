@@ -4,7 +4,9 @@ use rand::RngCore;
 use rand::Rng;
 use uuid::Uuid;
 use openssl::rand::rand_bytes;
+use openssl::symm::{encrypt, decrypt, Cipher};
 use ring::rand::{SecureRandom, SystemRandom};
+use sha2::{Sha256, Digest};
 use base64;
 use arboard::Clipboard;
 use std::fs::File;
@@ -108,7 +110,6 @@ pub fn generate_username() -> String {
     }
 }
 
-
 /// Copies text to clipboard
 pub fn copy_to_clipboard(text: &str) -> bool {
     if let Ok(mut clipboard) = Clipboard::new() {
@@ -123,4 +124,31 @@ pub fn copy_to_clipboard(text: &str) -> bool {
         }
     }
     false
+}
+
+/// Encrypts a plaintext using AES-256-CBC with the given 32-byte key
+pub fn encrypt_aes256_cbc(plaintext: &[u8], key: &[u8]) -> Result<Vec<u8>, String> {
+    if key.len() != 32 {
+        return Err("Key must be 32 bytes.".into());
+    }
+    let iv = &key[..16]; // Derive IV from first 16 bytes of key
+    encrypt(Cipher::aes_256_cbc(), key, Some(iv), plaintext)
+        .map_err(|e| format!("Encryption failed: {}", e))
+}
+
+/// Decrypts AES-256-CBC ciphertext using the provided 32-byte key
+pub fn decrypt_aes256_cbc(ciphertext: &[u8], key: &[u8]) -> Result<Vec<u8>, String> {
+    if key.len() != 32 {
+        return Err("Key must be 32 bytes.".into());
+    }
+    let iv = &key[..16];
+    // This returns Result<Vec<u8>, openssl::error::ErrorStack>
+    openssl::symm::decrypt(Cipher::aes_256_cbc(), key, Some(iv), ciphertext)
+        .map_err(|e| format!("Decryption failed: {}", e))
+}
+
+pub fn sha256_checksum(data: &[u8]) -> String {
+    let mut hasher = Sha256::new();
+    hasher.update(data);
+    hex::encode(hasher.finalize())
 }
