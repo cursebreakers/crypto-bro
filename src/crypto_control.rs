@@ -131,9 +131,16 @@ pub fn encrypt_aes256_cbc(plaintext: &[u8], key: &[u8]) -> Result<Vec<u8>, Strin
     if key.len() != 32 {
         return Err("Key must be 32 bytes.".into());
     }
-    let iv = &key[..16]; // Derive IV from first 16 bytes of key
-    encrypt(Cipher::aes_256_cbc(), key, Some(iv), plaintext)
-        .map_err(|e| format!("Encryption failed: {}", e))
+    let mut iv = [0u8; 16];
+    rand::thread_rng().fill(&mut iv);
+
+    
+    let mut ciphertext = encrypt(Cipher::aes_256_cbc(), key, Some(&iv), plaintext)
+        .map_err(|e| format!("Encryption failed: {}", e))?;
+    
+    let mut result = iv.to_vec();
+    result.append(&mut ciphertext);
+    Ok(result)
 }
 
 /// Decrypts AES-256-CBC ciphertext using the provided 32-byte key
@@ -141,9 +148,12 @@ pub fn decrypt_aes256_cbc(ciphertext: &[u8], key: &[u8]) -> Result<Vec<u8>, Stri
     if key.len() != 32 {
         return Err("Key must be 32 bytes.".into());
     }
-    let iv = &key[..16];
-    // This returns Result<Vec<u8>, openssl::error::ErrorStack>
-    openssl::symm::decrypt(Cipher::aes_256_cbc(), key, Some(iv), ciphertext)
+    if ciphertext.len() < 16 {
+        return Err("Ciphertext too short.".into());
+    }
+
+    let (iv, data) = ciphertext.split_at(16);
+    openssl::symm::decrypt(Cipher::aes_256_cbc(), key, Some(iv), data)
         .map_err(|e| format!("Decryption failed: {}", e))
 }
 

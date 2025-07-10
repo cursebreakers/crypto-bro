@@ -2,7 +2,7 @@
 
 **v0.0.9** - "crypto-bro"
 
-*A CLI tool for generating credentials, cryptographic keys and ID's.*
+*A CLI tool for generating credentials, cryptographic keys and ID's, with experimental support for file encryption and decryption.*
 
 ---
 
@@ -12,9 +12,10 @@
 - **Ring Cryptographic Key (256-bit)**: Generates a cryptographic key using the Ring library.
 - **UUID (v4 format)**: Generates a version 4 UUID.
 - **API Key (Base64 encoded, 256-bit)**: Generates a Base64 encoded API key.
-- **Passwords: (16 and 32 characters)**: Generates random passwords.
+- **Passwords & Secrets: (16 and 32 characters)**: Generates random passwords and secrets.
 - **Usernames (Word list Generated)**: Generate usernames using word lists.
 - **File Encryption/Decryption**: Secure your files using 256-bit encryption. *EXPERIMENTAL*
+
 ---
 
 ## Installation
@@ -76,6 +77,7 @@ Once initialized, you may select an option from the main menu:
 7. Username                   (Word list generated)
 8. Encrypt file               (AES 256-bit)
 9. Decrypt file               (AES 256-bit)
+
 q. Quit
 
 ---
@@ -143,7 +145,7 @@ You are encouraged to edit and customize your word lists. They can be found unde
 
 ## File Encryption/Decryption
 
-Options 8 and 9 in the main menu use a CBC AES-256 engine to encode and decode your files.
+Options 8 and 9 in the main menu use AES-256 in CBC mode to encrypt and decrypt files.
 
 **How it works:**
 - Encryption:
@@ -159,8 +161,9 @@ Options 8 and 9 in the main menu use a CBC AES-256 engine to encode and decode y
   4. Once you enter the key, the file will be decrypted.
   5. Once complete, you will be given a checksum for the encrypted file.
 
-*NOTE:* Max filesize is set to 25% of your device's available RAM by default. This can be adjusted by tweaking the `max_allowed_file_size` function in `src/lunchbox.rs`
-
+*NOTE:* 
+- Max filesize is set to 25% of your device's available RAM by default. This can be adjusted by tweaking the `max_allowed_file_size` function in `src/lunchbox.rs`
+- Files encrypted with crypto-bro are not compatible with other encryption tools, and files encrypted elsewhere may not decrypt correctly with crypto-bro.
 ---
 
 # WORKING/NEXT
