@@ -4,7 +4,7 @@ use std::fs;
 use std::io::{self, Write};
 use std::path::Path;
 use rand::Rng;
-use sha2::{Digest, Sha256};
+use sha2::{Sha256};
 use std::fs::File;
 use std::io::Read;
 
@@ -111,7 +111,7 @@ pub fn encrypt_menu_loop() {
                 println!("\n\n\x1b[92m✅ Encryption Complete\x1b[0m");
                 println!("→ Encrypted file saved to: \x1b[96m{}\x1b[0m", out_path);
                 println!("→ Integrity checksum: \x1b[95m{}\x1b[0m", checksum);
-                println!("\n\x1b[93mIMPORTANT:\x1b[0m Keep your decryption key and checksum hash safe.\nThis is the only time you’ll see the key.\n");
+                println!("\n\x1b[93mIMPORTANT:\x1b[0m Keep your decryption key and checksum hash safe.\n\n");
 
                 loop {
                     println!("Options:\n  [m] Main menu\n  [q] Quit");

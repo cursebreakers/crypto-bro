@@ -4,3 +4,5 @@ src/words/nsfw/
 
 Cargo.lock
 
+/data/decrypted
+/data/encrypted

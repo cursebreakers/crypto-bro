@@ -1,6 +1,6 @@
 # Key Generator | Rust
 
-**v0.0.9** - "crypto-bro"
+**v0.1.0** - "crypto-bro"
 
 *A CLI tool for generating credentials, cryptographic keys and ID's, with experimental support for file encryption and decryption.*
 
@@ -24,7 +24,7 @@
 
 `curl https://sh.rustup.rs -sSf | sh`
 
-1. Fork the repository:
+1. Clone/fork the source:
 
 `git clone https://github.com/cursebreakers/crypto-bro`
 
@@ -153,24 +153,28 @@ Options 8 and 9 in the main menu use AES-256 in CBC mode to encrypt and decrypt 
   2. At the submenu, you will be prompted to select target file.
   3. Next, you will generate a key. *Don't lose it!*
   4. Once you accept the key, the file will be encrypted.
-  5. Once complete, you will be given a checksum for the encrypted file.
+  5. Once complete, you will be given a checksum to verfiy integrity of the encrypted file.
 - Decryption:
   1. *Make sure you place a file in the "crypto-bro/data/encrypted" directory first.*
   2. At the submenu, you will be prompted to select target file.
   3. Next, you will be asked to provide your key. *You saved it, right?*
   4. Once you enter the key, the file will be decrypted.
-  5. Once complete, you will be given a checksum for the encrypted file.
+  5. Once complete, you will be given a checksum to verfiy integrity of the decrypted file.
 
 *NOTE:* 
 - Max filesize is set to 25% of your device's available RAM by default. This can be adjusted by tweaking the `max_allowed_file_size` function in `src/lunchbox.rs`
-- Files encrypted with crypto-bro are not compatible with other encryption tools, and files encrypted elsewhere may not decrypt correctly with crypto-bro.
+- Files encrypted with this tool use a custom IV derived from the key, so compatibility with other AES tools is not guaranteed. 
+- Don't lose your keys!
+
 ---
 
 # WORKING/NEXT
 
+**FIX**
+
 - Known bug: submenu option "c" to copy key to clipboard doesn't always work on the first try
-- Improving the greeting/ascii art appearance
-- Checksums for decryption seem to be malfunctioning (often).
+- Are the checksums for decrypted files malfunctioning?
+- Improve the greeting/ascii art appearance
 
 **FUTURE**
 
@@ -223,18 +227,21 @@ Crates used in this program.
 | `base64`            | 0.13    | Base64 encoding and decoding                    |
 | `chacha20poly1305`  | 0.8     | ChaCha20-Poly1305 encryption                    |
 | `clap`              | 4.5     | Command-line argument parser                    |
+| `crossterm`         | 0.27    | UI behavior                                     |
+| `hex`               | 0.4.3   | checksum display                                |
 | `hmac`              | 0.11    | HMAC (Hash-based Message Authentication)        |
 | `openssl`           | 0.10    | Cryptographic operations                        |
 | `pbkdf2`            | 0.9     | Password-based key derivation function (PBKDF2) |
 | `rand`              | 0.8     | Random number generation                        |
 | `ring`              | 0.16    | Cryptographic primitives                        |
+| `sha2`              | 0.10.9  | SHA-256 checksum hashing                        |
 | `uuid`              | 1.0     | UUID generation (v4 feature enabled)            |
 
 Honorable mention to [cargo-mommy](https://github.com/Gankra/cargo-mommy), for making programming with Rust much more fun.
 
 ## License:
 
-This project is to be released under either MIT, Apache 2.0 or both.
+This program is in development and no official release or license information can be provided.
 
 ## Contributions:
 
