@@ -72,8 +72,8 @@ fn main() {
             println!("    [5] Password                  (16-characters)");
             println!("    [6] Password                  (32-characters)");
             println!("    [7] Username                  (Word list generated)");
-            println!("    [8] Pack .env file            (Encrypt)");
-            println!("    [9] Unpack .env file          (Decrypt)\n");
+            println!("    [8] Encrypt file              (AES 256-bit)");
+            println!("    [9] Decrypt file              (AES 256-bit)");
             println!("    [q] Quit\n");
             println!("________________________________\n");
 
