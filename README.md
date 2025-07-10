@@ -82,30 +82,6 @@ q. Quit
 
 ---
 
-## Submenu
-
-The submenu will open once a key is generated, whether from the main menu or quick start. 
-
-The submenu displays four options:
-
-**Copy to clipboard**
-
-- Select "c" to copy the key to your clipboard.
-
-**Regenerate**
-
-- Select "r" to regenerate the key.
-
-**Main menu**
-
-- Select "m" to return to the main menu.
-
-**Quit**
-
-- Select "q" to terminate the program.
-
----
-
 ## Generator options
 
 Most options are straightforward. Just select the key type and it will be generated. Usernames are a bit more fun.
@@ -141,6 +117,28 @@ You are encouraged to edit and customize your word lists. They can be found unde
 
 *NOTE: You will need to relaunch the program to use the new words you've added.*
 
+### Submenu
+
+The submenu will open once a key is generated, whether from the main menu or quick start. 
+
+The submenu displays four options:
+
+**Copy to clipboard**
+
+- Select "c" to copy the key to your clipboard.
+
+**Regenerate**
+
+- Select "r" to regenerate the key.
+
+**Main menu**
+
+- Select "m" to return to the main menu.
+
+**Quit**
+
+- Select "q" to terminate the program.
+
 ---
 
 ## File Encryption/Decryption
@@ -150,21 +148,21 @@ Options 8 and 9 in the main menu use AES-256 in CBC mode to encrypt and decrypt 
 **How it works:**
 - Encryption:
   1. *Make sure you place a file in the "crypto-bro/data" directory first.*
-  2. At the submenu, you will be prompted to select target file.
+  2. At this submenu, you will be prompted to select the target file.
   3. Next, you will generate a key. *Don't lose it!*
   4. Once you accept the key, the file will be encrypted.
   5. Once complete, you will be given a checksum to verfiy integrity of the encrypted file.
 - Decryption:
   1. *Make sure you place a file in the "crypto-bro/data/encrypted" directory first.*
-  2. At the submenu, you will be prompted to select target file.
+  2. At this submenu, you will be prompted to select the target file.
   3. Next, you will be asked to provide your key. *You saved it, right?*
   4. Once you enter the key, the file will be decrypted.
   5. Once complete, you will be given a checksum to verfiy integrity of the decrypted file.
 
-*NOTE:* 
+*NOTES:* 
 - Max filesize is set to 25% of your device's available RAM by default. This can be adjusted by tweaking the `max_allowed_file_size` function in `src/lunchbox.rs`
-- Files encrypted with this tool use a custom IV derived from the key, so compatibility with other AES tools is not guaranteed. 
-- Don't lose your keys!
+- Files encryption compatibility with other AES tools is not guaranteed.
+- Support of any filetype other than UTF-8 plain-text is experimental and not guaranteed.
 
 ---
 
