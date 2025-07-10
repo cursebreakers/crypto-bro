@@ -145,19 +145,19 @@ The submenu displays four options:
 
 Options 8 and 9 in the main menu use AES-256 in CBC mode to encrypt and decrypt files.
 
-**How it works:**
-- Encryption:
-  1. *Make sure you place a file in the "crypto-bro/data" directory first.*
-  2. At this submenu, you will be prompted to select the target file.
-  3. Next, you will generate a key. *Don't lose it!*
-  4. Once you accept the key, the file will be encrypted.
-  5. Once complete, you will be given a checksum to verfiy integrity of the encrypted file.
-- Decryption:
-  1. *Make sure you place a file in the "crypto-bro/data/encrypted" directory first.*
-  2. At this submenu, you will be prompted to select the target file.
-  3. Next, you will be asked to provide your key. *You saved it, right?*
-  4. Once you enter the key, the file will be decrypted.
-  5. Once complete, you will be given a checksum to verfiy integrity of the decrypted file.
+Encryption:
+1. *Make sure you place a file in the "crypto-bro/data" directory first.*
+2. At this submenu, you will be prompted to select the target file.
+3. Next, you will generate a key. *Don't lose it!*
+4. Once you accept the key, the file will be encrypted.
+5. Once complete, you will be given a checksum to verfiy integrity of the encrypted file.
+
+Decryption:
+1. *Make sure you place a file in the "crypto-bro/data/encrypted" directory first.*
+2. At this submenu, you will be prompted to select the target file.
+3. Next, you will be asked to provide your key. *You saved it, right?*
+4. Once you enter the key, the file will be decrypted.
+5. Once complete, you will be given a checksum to verfiy integrity of the decrypted file.
 
 *NOTES:* 
 - Max filesize is set to 25% of your device's available RAM by default. This can be adjusted by tweaking the `max_allowed_file_size` function in `src/lunchbox.rs`
